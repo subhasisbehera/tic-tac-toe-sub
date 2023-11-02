@@ -30,7 +30,7 @@ jobs:
             npm install
       
       - name: Scan file using Trivy
-        run: trivy fs . > trivy_suggestions.txt
+        run: /usr/bin/trivy fs . > trivy_suggestions.txt
 
       - name: Docker Build image
         run: |

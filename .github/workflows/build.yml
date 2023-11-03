@@ -35,7 +35,7 @@ jobs:
       - name: Docker Build image
         run: |
           docker build -t tic-tac-toe-game .
-          docker tag tic-tac-toe-game adityadho/tic-tac-toe-game:latest
+          docker tag tic-tac-toe-game subhasibehera/tic-tac-toe-game:latest
           
         env:
           DOCKER_CLI_ACI: 1  
@@ -110,15 +110,15 @@ jobs:
           current_directory=$(pwd)
           echo "Current directory is: $current_directory"
 
-      - name: Slack Notification
-        if: always()
-        uses: act10ns/slack@v1
-        with:
-          status: ${{ job.status }}
-          steps: ${{ toJson(steps) }}
-          channel: '#github-actions-eks'
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOKS_URL }}
+#      - name: Slack Notification
+#        if: always()
+ #       uses: act10ns/slack@v1
+ #       with:
+ #         status: ${{ job.status }}
+ #         steps: ${{ toJson(steps) }}
+  #        channel: '#github-actions-eks'
+  #      env:
+  #        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOKS_URL }}
   
   destroy: 
     needs: [build, deploy]
